@@ -1,14 +1,8 @@
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import { redirect } from 'next/navigation';
+import { isAdminUser } from "../utils/auth";
 
 export default async function Admin() {
   // Utils
-  const { getPermission } = getKindeServerSession();
-  const permission = await getPermission('create:menu');
-
-  if (!permission) {
-    redirect('/');
-  }
+  await isAdminUser();
 
   // Render
   return (

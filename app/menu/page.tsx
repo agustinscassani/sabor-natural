@@ -1,14 +1,8 @@
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import { redirect } from 'next/navigation';
+import { isUserLoggedIn } from "../utils/auth";
 
 export default async function Menu() {
   // Utils
-  const { isAuthenticated } = getKindeServerSession();
-  const isAuthed = await isAuthenticated();
-
-  if (!isAuthed) {
-    redirect('/sign-in');
-  }
+  await isUserLoggedIn();
 
   // Render
   return (
