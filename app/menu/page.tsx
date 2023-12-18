@@ -1,8 +1,14 @@
+import { redirect } from "next/navigation";
+
 import { isUserLoggedIn } from "../utils/auth";
 
 export default async function Menu() {
   // Utils
-  await isUserLoggedIn();
+  const isAuthenticated = await isUserLoggedIn();
+
+  if (!isAuthenticated) {
+    redirect('/sign-in');
+  }
 
   // Render
   return (

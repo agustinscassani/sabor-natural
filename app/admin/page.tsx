@@ -1,8 +1,14 @@
+import { redirect } from "next/navigation";
+
 import { isAdminUser } from "../utils/auth";
 
 export default async function Admin() {
   // Utils
-  await isAdminUser();
+  const isAdmin = await isAdminUser();
+
+  if (!isAdmin) {
+    redirect('/');
+  }
 
   // Render
   return (

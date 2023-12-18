@@ -1,20 +1,17 @@
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
-import { redirect } from 'next/navigation';
 
-export async function isUserLoggedIn() {
+export async function isUserLoggedIn(): Promise<boolean> {
+  // Grab user session from server
   const { isAuthenticated } = getKindeServerSession();
-  const isAuthed = await isAuthenticated();
-
-  if (!isAuthed) {
-    redirect('/sign-in');
-  }
+  // Check if user is authenticated
+  return await isAuthenticated();
 }
 
-export async function isAdminUser() {
+export async function isAdminUser(): Promise<boolean> {
+  // Grab user session from server
   const { getPermission } = getKindeServerSession();
+  // Grab create menu permission (only admin users can create menus)
   const permission = await getPermission('create:menu');
 
-  if (!permission?.isGranted) {
-    redirect('/');
-  }
+  return permission ? permission.isGranted : false;
 }
