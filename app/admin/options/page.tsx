@@ -1,4 +1,5 @@
-import { Option, OptionTypes } from '@/app/types/option';
+import { Option } from '@/app/types/option';
+import { OptionTypes } from '@/app/types/enumerations';
 import { saveOption } from '@/app/actions/options';
 
 export default async function Option() {

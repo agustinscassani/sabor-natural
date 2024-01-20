@@ -1,7 +1,4 @@
-export enum OptionTypes {
-  guarnicion = 'Guarnición',
-  principal = 'Principal',
-};
+import { OptionTypes } from './enumerations';
 
 export type Option = {
   description: string;

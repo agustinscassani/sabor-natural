@@ -1,23 +1,15 @@
-import { Option } from "./option";
+import { Days } from './enumerations';
+import { Option } from './option';
 
-enum Days {
-  Lunes = 'Lunes',
-  Martes = 'Martes',
-  Miercoles = 'Miércoles',
-  Jueves = 'Jueves',
-  Viernes = 'Viernes',
-};
-
-type MenuItem = {
-  guarnicion?: Option;
-  notas?: string;
-  principal: Option;
+type MenuDay = {
+  guarniciones: Option[];
+  principales: Option[];
 };
 
 export type Menu = {
-  [Days.Lunes]: MenuItem,
-  [Days.Martes]: MenuItem,
-  [Days.Miercoles]: MenuItem,
-  [Days.Jueves]: MenuItem,
-  [Days.Viernes]: MenuItem,
+  [Days.Lunes]: MenuDay,
+  [Days.Martes]: MenuDay,
+  [Days.Miercoles]: MenuDay,
+  [Days.Jueves]: MenuDay,
+  [Days.Viernes]: MenuDay,
 };
